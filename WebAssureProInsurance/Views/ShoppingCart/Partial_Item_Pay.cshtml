@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebAssureProInsurance.Models.ShoppingCartItem>
+@using WebAssureProInsurance.Common
+
+
+
+@if (Model != null && Model.Any())
+{
+    <h3>CART <span style="float:right;position:relative"><small>@Model.Count()</small></span></h3>
+    var i = 0;
+    var totalPrice = decimal.Zero;
+    <div style="border:1px solid #808080">
+        <table class="table">
+            @foreach (var item in Model)
+            {
+                totalPrice += item.TotalPrice;
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@Common.FormatNumber(item.Price, 0)</td>
+                </tr>
+
+            }
+            <tr>
+                <td>Total Price</td>
+                <td>@Common.FormatNumber(totalPrice, 0)</td>
+            </tr>
+        </table>
+
+    </div>
+
+
+
+}
+else
+{
+
+}
+
